@@ -1,7 +1,19 @@
 /* Royal Frame Interiors
    Brand: Ink #000000 on Paper #FFFFFF only.
    Type pairing, from the brand kit: Playfair Display Medium for display
-   (it is the wordmark face) and Inter Light for supporting text. */
+   (it is the wordmark face) and Inter Light for supporting text.
+   Fonts are self-hosted variable files (latin subset). */
+
+@font-face{
+  font-family:"Playfair Display";
+  src:url("assets/fonts/playfair.woff2") format("woff2");
+  font-weight:400 900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Inter";
+  src:url("assets/fonts/inter.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
 
 :root{
   --ink:#000;
@@ -133,7 +145,7 @@ h2{font-size:clamp(2.1rem,4vw,3.2rem)}
   margin:34px 0 14px;color:inherit;
 }
 .section-dark .control-label{color:#fff}
-.section-soft .control-label, .section .control-label{color:#000}
+.section:not(.section-dark) .control-label{color:#000}
 .thumb-row{display:flex;gap:12px}
 .thumb{width:86px;height:64px;padding:0;border:2px solid #3a3a3a;overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover}
@@ -200,7 +212,7 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;background:#000;borde
 .option.is-active{background:#000;color:#fff}
 .option.is-active .option-sub{color:#c9c9c9}
 .estimate-result{border-top:2px solid #000;padding-top:8px}
-.estimate-figure{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(2.3rem,4.4vw,3.6rem);line-height:1.15;margin:10px 0 14px}
+.estimate-figure{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.15;margin:10px 0 14px}
 .estimate-detail{font-size:17px;max-width:42ch}
 .estimate-note{color:var(--grey);font-size:14.5px;margin:20px 0 30px;max-width:48ch}
 
@@ -239,12 +251,13 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;background:#000;borde
 
 /* ---------- lightbox ---------- */
 .lightbox{
-  position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.95);
+  position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.97);
   display:flex;align-items:center;justify-content:center;padding:32px;
+  overflow-y:auto;
 }
 .lightbox[hidden]{display:none}
-.lb-figure{max-width:1020px;width:100%}
-.lb-figure img{width:100%;max-height:68vh;object-fit:contain;background:#111}
+.lb-figure{max-width:1020px;width:100%;margin:auto}
+.lb-figure img{width:100%;max-height:58vh;object-fit:contain;background:#111}
 .lb-figure figcaption{color:#fff;padding-top:22px}
 .lb-figure h3{font-size:30px;margin-bottom:8px}
 .lb-figure p{color:#cfcfcf;max-width:62ch}

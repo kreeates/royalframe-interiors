@@ -243,7 +243,6 @@ document.querySelectorAll(".acc-item").forEach(item => {
   const setOpen = open => {
     item.classList.toggle("open", open);
     head.setAttribute("aria-expanded", open);
-    item.querySelector(".acc-sign").textContent = open ? "−" : "+";
     body.style.maxHeight = open ? body.scrollHeight + "px" : "0px";
   };
   if (item.classList.contains("open") || head.getAttribute("aria-expanded") === "true") setOpen(true);
@@ -253,7 +252,6 @@ document.querySelectorAll(".acc-item").forEach(item => {
       o.classList.remove("open");
       o.querySelector(".acc-body").style.maxHeight = "0px";
       o.querySelector(".acc-head").setAttribute("aria-expanded", "false");
-      o.querySelector(".acc-sign").textContent = "+";
     });
     if (willOpen) setOpen(true);
   });
