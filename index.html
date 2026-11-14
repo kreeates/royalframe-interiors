@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Frame Interiors: Interior Design Studio</title>
+<meta name="description" content="Royal Frame Interiors is an interior design studio for homes and workplaces. Layout first, light second, furniture last.">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top" aria-label="Royal Frame Interiors, home">
+    <img src="assets/logo.svg" alt="Royal Frame Interiors" width="212" height="57">
+  </a>
+  <nav class="main-nav" aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="#frame-tool">The Frame</a>
+    <a href="#services">Services</a>
+    <a href="#estimate">Estimate</a>
+    <a href="#process">Process</a>
+  </nav>
+  <a class="btn btn-dark header-cta" href="#contact">Start a project</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#work">Work</a>
+  <a href="#frame-tool">The Frame</a>
+  <a href="#services">Services</a>
+  <a href="#estimate">Estimate</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Start a project</a>
+</div>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Rooms, composed<br>like pictures.</h1>
+      <div class="hero-row">
+        <p class="hero-lede">Royal Frame Interiors designs homes and workplaces one room at a time. Layout first, light second, furniture last. Every project starts with a simple question: what should this room frame?</p>
+        <div class="hero-meta">
+          <p>Interior design studio</p>
+          <p>Homes, kitchens, workplaces</p>
+          <p>Design and execution</p>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="assets/img/hero.jpg" alt="Living room designed by Royal Frame Interiors, grey sofas, an arc lamp and a garden view" fetchpriority="high">
+      <figcaption class="wrap hero-caption"><span>A living room built around its window.</span><span>Living rooms</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- Work -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 &nbsp;Selected work</p>
+        <h2>Recent rooms</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects by room type">
+        <button class="filter-btn is-active" data-filter="all">All rooms</button>
+        <button class="filter-btn" data-filter="living">Living</button>
+        <button class="filter-btn" data-filter="kitchen">Kitchen</button>
+        <button class="filter-btn" data-filter="bedroom">Bedroom</button>
+        <button class="filter-btn" data-filter="office">Workplace</button>
+      </div>
+      <div class="grid" id="projectGrid"></div>
+      <p class="grid-note" id="gridNote"></p>
+    </div>
+  </section>
+
+  <!-- The Frame tool -->
+  <section class="section section-dark" id="frame-tool">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label label-light">02 &nbsp;The frame</p>
+        <h2>Every room has one view<br>worth framing.</h2>
+      </div>
+      <div class="frame-layout">
+        <div class="frame-controls">
+          <p>Designers decide what a room looks at: a window, a wall of pictures, the garden. Try it yourself. Pick a room, then compose the frame.</p>
+          <p class="control-label">Room</p>
+          <div class="thumb-row" id="thumbRow">
+            <button class="thumb is-active" data-photo="assets/img/work-gallery.jpg" aria-label="Room one, a wall of framed pictures"><img src="assets/img/work-gallery.jpg" alt=""></button>
+            <button class="thumb" data-photo="assets/img/frame-chair.jpg" aria-label="Room two, a reading corner"><img src="assets/img/frame-chair.jpg" alt=""></button>
+            <button class="thumb" data-photo="assets/img/hero.jpg" aria-label="Room three, a living room with a garden view"><img src="assets/img/hero.jpg" alt=""></button>
+          </div>
+          <p class="control-label">Zoom</p>
+          <input type="range" id="zoomRange" min="100" max="220" value="118" step="1" aria-label="Zoom the photograph">
+          <ul class="frame-how">
+            <li>Drag the picture to place it</li>
+            <li>Drag the frame itself to move it</li>
+            <li>Pull the square corner to resize it</li>
+          </ul>
+          <p class="frame-readout">Your frame: <strong id="frameRatio">3 : 2</strong></p>
+        </div>
+        <div class="stage" id="stage">
+          <img class="stage-base" id="stageBase" src="assets/img/work-gallery.jpg" alt="Room photograph, dimmed outside the frame">
+          <div class="crop-window" id="cropWindow">
+            <img id="cropImg" src="assets/img/work-gallery.jpg" alt="The framed part of the room">
+            <span class="crop-handle" id="cropHandle" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 &nbsp;Services</p>
+        <h2>What we do</h2>
+      </div>
+      <div class="accordion" id="servicesAccordion">
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="true">
+            <span class="acc-num">01</span><span class="acc-title">Full homes</span><span class="acc-sign">+</span>
+          </button>
+          <div class="acc-body">
+            <p>A whole home designed as one piece of work, so the rooms belong together. We plan the layout of every room first, then lighting and electrical points, then the furniture and finishes that sit inside that plan.</p>
+            <p class="acc-includes">Includes: space planning, lighting design, custom furniture, kitchens and wardrobes, on-site execution.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-num">02</span><span class="acc-title">Living rooms</span><span class="acc-sign">+</span>
+          </button>
+          <div class="acc-body">
+            <p>The room a home is judged by. We start with what the room should look at, then arrange seating, light and storage around it. Television walls, picture walls and reading corners are planned, not left over.</p>
+            <p class="acc-includes">Includes: seating layout, media and picture walls, lighting layers, soft furnishings.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-num">03</span><span class="acc-title">Kitchens</span><span class="acc-sign">+</span>
+          </button>
+          <div class="acc-body">
+            <p>A kitchen is a workshop before it is a showpiece. Counters at the right height, storage where your hands expect it, and light exactly where the knife work happens. Finishes are chosen to survive daily cooking.</p>
+            <p class="acc-includes">Includes: modular layout, counter and storage planning, appliance integration, task lighting.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-num">04</span><span class="acc-title">Bedrooms and wardrobes</span><span class="acc-sign">+</span>
+          </button>
+          <div class="acc-body">
+            <p>Bedrooms are designed for sleep first: blackout where it matters, warm light at the bedside, and wardrobes planned around what you actually own, counted before a single shelf is drawn.</p>
+            <p class="acc-includes">Includes: bed and bedside planning, wardrobe interiors, blackout and lighting, dressing units.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-num">05</span><span class="acc-title">Workplaces</span><span class="acc-sign">+</span>
+          </button>
+          <div class="acc-body">
+            <p>Offices, studios and clinics that people can work in all day. Desks get daylight, meeting rooms get quiet, and the brand sits in the room quietly through colour and material, not slogans on walls.</p>
+            <p class="acc-includes">Includes: desk and cabin layout, meeting rooms, acoustic treatment, reception areas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estimate -->
+  <section class="section section-soft" id="estimate">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 &nbsp;Estimate</p>
+        <h2>What it might cost</h2>
+      </div>
+      <div class="estimate-layout">
+        <div class="estimate-controls">
+          <p class="control-label">Room</p>
+          <div class="option-list" id="roomOptions">
+            <button class="option is-active" data-mult="1">Full home</button>
+            <button class="option" data-mult="1.05">Living room</button>
+            <button class="option" data-mult="1.35">Kitchen</button>
+            <button class="option" data-mult="0.95">Bedroom</button>
+            <button class="option" data-mult="1.1">Workplace</button>
+          </div>
+          <p class="control-label">Carpet area: <strong id="areaOut">1,200 sq ft</strong></p>
+          <input type="range" id="areaRange" min="250" max="4000" value="1200" step="50" aria-label="Carpet area in square feet">
+          <p class="control-label">Level of finish</p>
+          <div class="option-list" id="finishOptions">
+            <button class="option" data-rate="1400">Essential<span class="option-sub">Clean lines, durable basics</span></button>
+            <button class="option is-active" data-rate="2100">Premium<span class="option-sub">Better materials, custom furniture</span></button>
+            <button class="option" data-rate="3200">Bespoke<span class="option-sub">One-off pieces, fine finishes</span></button>
+          </div>
+        </div>
+        <div class="estimate-result">
+          <p class="control-label">Indicative budget</p>
+          <p class="estimate-figure" id="estimateFigure">₹22.7 – ₹28.2 lakh</p>
+          <p class="estimate-detail" id="estimateDetail">Premium finish, full home, 1,200 sq ft at ₹2,100 per sq ft.</p>
+          <p class="estimate-note">This is a planning figure for this demo, based on typical per square foot rates. The studio confirms a written quote only after seeing the site and measuring it.</p>
+          <a class="btn btn-dark" href="#contact">Ask for a proper quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 &nbsp;Process</p>
+        <h2>How a project runs</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <p class="process-num">01</p>
+          <h3>Walk the site</h3>
+          <p>We visit, measure and listen. You talk about how the room is used; we note where the light comes from and what has to stay.</p>
+        </div>
+        <div class="process-step">
+          <p class="process-num">02</p>
+          <h3>Draw the frame</h3>
+          <p>Layouts and drawings before anything is bought. You see the plan, the materials and a fixed quote, in writing.</p>
+        </div>
+        <div class="process-step">
+          <p class="process-num">03</p>
+          <h3>Build it</h3>
+          <p>Our own carpenters, electricians and painters work to the drawings. One person from the studio answers for the site, every day.</p>
+        </div>
+        <div class="process-step">
+          <p class="process-num">04</p>
+          <h3>Hand over, cleaned</h3>
+          <p>We walk every corner with you, fix what is not right, and hand over a cleaned room with manuals and warranties in a file.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-soft" id="contact">
+    <div class="wrap contact-layout">
+      <div>
+        <p class="section-label">06 &nbsp;Contact</p>
+        <h2 class="contact-title">Start a project</h2>
+        <p class="contact-copy">Tell us about the room. What it is, where it is, and what is not working. We reply with a time to walk the site, not a sales call.</p>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <label>Your name
+          <input type="text" name="name" id="fName" required autocomplete="name" placeholder="Full name">
+        </label>
+        <label>Phone
+          <input type="tel" name="phone" id="fPhone" required autocomplete="tel" placeholder="Mobile number">
+        </label>
+        <label>City
+          <input type="text" name="city" id="fCity" required placeholder="Where is the project?">
+        </label>
+        <label>What are you planning?
+          <textarea name="message" id="fMsg" rows="4" placeholder="A 3BHK that needs a living room and kitchen, ready by March."></textarea>
+        </label>
+        <button type="submit" class="btn btn-dark">Send enquiry</button>
+        <p class="form-note">Demo form: on the live site this connects to the studio's email and WhatsApp.</p>
+      </form>
+      <div class="form-success" id="formSuccess" hidden>
+        <h3>Thank you, <span id="successName">friend</span>.</h3>
+        <p>Your enquiry is ready. On the live site it would now be with the studio, and you would get a call to fix a site walk.</p>
+        <button class="btn btn-outline" id="sendAnother">Send another enquiry</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <img class="footer-logo" src="assets/logo-square-white.svg" alt="Royal Frame Interiors">
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#work">Work</a>
+      <a href="#frame-tool">The Frame</a>
+      <a href="#services">Services</a>
+      <a href="#estimate">Estimate</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-line">© 2026 Royal Frame Interiors. Demo website: photography from Unsplash, shown for layout.</p>
+    <p class="footer-credit">Built by sodoku.in</p>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project viewer" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Close viewer">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous project">←</button>
+  <figure class="lb-figure">
+    <img id="lbImg" src="" alt="">
+    <figcaption>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <p class="lb-scope" id="lbScope"></p>
+    </figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next project">→</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
