@@ -64,11 +64,17 @@ const grid = document.getElementById("projectGrid");
 const gridNote = document.getElementById("gridNote");
 let visibleProjects = PROJECTS.slice();
 
+/* Image sizes: 800px and 1200px variants keep phones fast;
+   the full-size file is only loaded where the screen can use it. */
+const SMALL_SCREEN = window.matchMedia("(max-width: 820px)");
+const sized = src => src.replace("assets/img/", "assets/img/m/");
+const med = src => src.replace("assets/img/", "assets/img/l/");
+
 function renderProjects(list) {
   visibleProjects = list;
   grid.innerHTML = list.map((p, i) => `
     <article class="project" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.title}">
-      <div class="project-media"><img src="${p.img}" alt="${p.title}. ${p.sub}" loading="lazy"></div>
+      <div class="project-media"><img src="${sized(p.img)}" srcset="${sized(p.img)} 800w, ${med(p.img)} 1200w, ${p.img} 1600w" sizes="(max-width: 820px) 100vw, 600px" width="1600" height="1200" alt="${p.title}. ${p.sub}" loading="lazy" decoding="async"></div>
       <div class="project-caption"><h3>${p.title}</h3><p>${p.label}</p></div>
       <p class="project-sub">${p.sub}</p>
     </article>`).join("");
@@ -103,7 +109,7 @@ function openLightbox(i) {
 }
 function updateLightbox() {
   const p = visibleProjects[lbIndex];
-  lbImg.src = p.img;
+  lbImg.src = SMALL_SCREEN.matches ? med(p.img) : p.img;
   lbImg.alt = `${p.title}. ${p.sub}`;
   document.getElementById("lbTitle").textContent = p.title;
   document.getElementById("lbDesc").textContent = p.desc;
@@ -117,6 +123,15 @@ function stepLightbox(d) {
   lbIndex = (lbIndex + d + visibleProjects.length) % visibleProjects.length;
   updateLightbox();
 }
+/* swipe to move between rooms on touch screens (the arrows are desktop-only) */
+let lbTouchX = null;
+lightbox.addEventListener("touchstart", e => { lbTouchX = e.changedTouches[0].clientX; }, { passive: true });
+lightbox.addEventListener("touchend", e => {
+  if (lbTouchX === null) return;
+  const dx = e.changedTouches[0].clientX - lbTouchX;
+  lbTouchX = null;
+  if (Math.abs(dx) > 48) stepLightbox(dx < 0 ? 1 : -1);
+}, { passive: true });
 document.getElementById("lbClose").addEventListener("click", closeLightbox);
 document.getElementById("lbPrev").addEventListener("click", () => stepLightbox(-1));
 document.getElementById("lbNext").addEventListener("click", () => stepLightbox(1));
@@ -168,11 +183,14 @@ function renderFrame() {
   Object.assign(cropImg.style, { width: d.w + "px", height: d.h + "px", left: (ox - wx) + "px", top: (oy - wy) + "px" });
   ratioOut.textContent = ratioText(ww, wh);
 }
+let currentPhoto = "assets/img/work-gallery.jpg";
 function loadStagePhoto(src) {
+  currentPhoto = src;
+  const displaySrc = SMALL_SCREEN.matches ? med(src) : src;
   const probe = new Image();
   probe.onload = () => {
     iw = probe.naturalWidth; ih = probe.naturalHeight;
-    baseImg.src = src; cropImg.src = src;
+    baseImg.src = displaySrc; cropImg.src = displaySrc;
     const { W, H } = stageSize();
     ww = W * 0.62; wh = ww * 2 / 3;
     if (wh > H * 0.8) { wh = H * 0.8; ww = wh * 3 / 2; }
@@ -181,7 +199,7 @@ function loadStagePhoto(src) {
     ox = (W - d.w) / 2; oy = (H - d.h) / 2;
     renderFrame();
   };
-  probe.src = src;
+  probe.src = displaySrc;
 }
 document.querySelectorAll(".thumb").forEach(t => {
   t.addEventListener("click", () => {
@@ -233,7 +251,7 @@ stage.addEventListener("pointermove", e => {
   renderFrame();
 });
 ["pointerup", "pointercancel"].forEach(ev => stage.addEventListener(ev, () => drag = null));
-window.addEventListener("resize", () => { if (iw) loadStagePhoto(baseImg.getAttribute("src")); });
+window.addEventListener("resize", () => { if (iw) loadStagePhoto(currentPhoto); });
 loadStagePhoto("assets/img/work-gallery.jpg");
 
 /* ---------------- Services accordion ---------------- */

@@ -8,6 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="preload" href="assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" imagesrcset="assets/img/m/hero.jpg 800w, assets/img/l/hero.jpg 1200w, assets/img/hero.jpg 2000w" imagesizes="100vw">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -54,7 +55,7 @@
       </div>
     </div>
     <figure class="hero-photo">
-      <img src="assets/img/hero.jpg" alt="Living room designed by Royal Frame Interiors, grey sofas, an arc lamp and a garden view" fetchpriority="high">
+      <img src="assets/img/hero.jpg" srcset="assets/img/m/hero.jpg 800w, assets/img/l/hero.jpg 1200w, assets/img/hero.jpg 2000w" sizes="100vw" width="2000" height="1055" alt="Living room designed by Royal Frame Interiors, grey sofas, an arc lamp and a garden view" fetchpriority="high">
       <figcaption class="wrap hero-caption"><span>A living room built around its window.</span><span>Living rooms</span></figcaption>
     </figure>
   </section>
@@ -90,9 +91,9 @@
           <p>Designers decide what a room looks at: a window, a wall of pictures, the garden. Try it yourself. Pick a room, then compose the frame.</p>
           <p class="control-label">Room</p>
           <div class="thumb-row" id="thumbRow">
-            <button class="thumb is-active" data-photo="assets/img/work-gallery.jpg" aria-label="Room one, a wall of framed pictures"><img src="assets/img/work-gallery.jpg" alt=""></button>
-            <button class="thumb" data-photo="assets/img/frame-chair.jpg" aria-label="Room two, a reading corner"><img src="assets/img/frame-chair.jpg" alt=""></button>
-            <button class="thumb" data-photo="assets/img/hero.jpg" aria-label="Room three, a living room with a garden view"><img src="assets/img/hero.jpg" alt=""></button>
+            <button class="thumb is-active" data-photo="assets/img/work-gallery.jpg" aria-label="Room one, a wall of framed pictures"><img src="assets/img/t/work-gallery.jpg" width="400" height="300" loading="lazy" decoding="async" alt=""></button>
+            <button class="thumb" data-photo="assets/img/frame-chair.jpg" aria-label="Room two, a reading corner"><img src="assets/img/t/frame-chair.jpg" width="400" height="300" loading="lazy" decoding="async" alt=""></button>
+            <button class="thumb" data-photo="assets/img/hero.jpg" aria-label="Room three, a living room with a garden view"><img src="assets/img/t/hero.jpg" width="400" height="300" loading="lazy" decoding="async" alt=""></button>
           </div>
           <p class="control-label">Zoom</p>
           <input type="range" id="zoomRange" min="100" max="220" value="118" step="1" aria-label="Zoom the photograph">
@@ -291,6 +292,7 @@
     </nav>
     <p class="footer-contact">Sector 2, Noida &nbsp;·&nbsp; <a href="tel:+919315236194">+91 93152 36194</a> &nbsp;·&nbsp; <a href="tel:+917838878198">+91 78388 78198</a> &nbsp;·&nbsp; <a href="mailto:royalframeinteriors@gmail.com">royalframeinteriors@gmail.com</a></p>
     <p class="footer-line">© 2026 Royal Frame Interiors. Demo website: photography from Unsplash, shown for layout.</p>
+    <a class="to-top" href="#top">Back to top</a>
     <p class="footer-credit">Built by sodoku.in</p>
   </div>
 </footer>
