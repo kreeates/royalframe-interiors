@@ -74,7 +74,7 @@ function renderProjects(list) {
   visibleProjects = list;
   grid.innerHTML = list.map((p, i) => `
     <article class="project" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.title}">
-      <div class="project-media"><img src="${sized(p.img)}" srcset="${sized(p.img)} 800w, ${med(p.img)} 1200w, ${p.img} 1600w" sizes="(max-width: 820px) 100vw, 600px" width="1600" height="1200" alt="${p.title}. ${p.sub}" loading="lazy" decoding="async"></div>
+      <div class="project-media"><img src="${sized(p.img)}" srcset="${sized(p.img)} 800w, ${med(p.img)} 1200w, ${p.img} 1600w" sizes="(max-width: 820px) 100vw, 600px" width="1600" height="900" alt="${p.title}. ${p.sub}" loading="lazy" decoding="async"></div>
       <div class="project-caption"><h3>${p.title}</h3><p>${p.label}</p></div>
       <p class="project-sub">${p.sub}</p>
     </article>`).join("");

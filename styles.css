@@ -101,7 +101,7 @@ h2{font-size:clamp(2.1rem,4vw,3.2rem)}
 .hero-meta{border-top:2px solid var(--teal);padding-top:16px;min-width:250px}
 .hero-meta p{font-size:14px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;padding:3px 0;color:var(--ink)}
 .hero-photo{margin-top:72px}
-.hero-photo img{width:100%;height:min(74vh,760px);object-fit:cover}
+.hero-photo img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .hero-caption{
   display:flex;justify-content:space-between;gap:24px;
   padding-top:14px;padding-bottom:0;font-size:14px;color:var(--grey);font-weight:400;
@@ -139,7 +139,7 @@ h2{font-size:clamp(2.1rem,4vw,3.2rem)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:72px 48px}
 .project{cursor:pointer}
 .project-media{overflow:hidden;background:#EDEAE2;outline:1px solid var(--line);outline-offset:-1px}
-.project-media img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.project-media img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
 .project:hover .project-media img{transform:scale(1.035)}
 .project-caption{
   display:flex;justify-content:space-between;align-items:baseline;gap:20px;
@@ -320,7 +320,6 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;background:var(--teal
   .hero{padding-top:128px}
   .hero-row{flex-direction:column;align-items:flex-start;gap:30px}
   .hero-photo{margin-top:48px}
-  .hero-photo img{height:52vh}
   .section-head{margin-bottom:40px}
   .grid{grid-template-columns:1fr;gap:52px}
   /* finger-sized filter targets; the gold rule still lands on the border */
